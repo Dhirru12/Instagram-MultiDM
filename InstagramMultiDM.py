@@ -10,7 +10,7 @@ from selenium.webdriver.common.keys import Keys
 class MultiDM:
     def __init__(self,input_user):
         botUsername = "doggo.bot8891"
-        botPassword = "Dhirran1" 
+        botPassword = "Password" 
 
 
         self.driver = webdriver.Chrome(executable_path = './chromedriver.exe')
@@ -52,6 +52,7 @@ class MultiDM:
             print("Unexpected error:", sys.exc_info()[0])
     def chat_with(self,output_user):
         poop = "poop"
+
     def text(self,text_string):
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//textarea[@placeholder = 'Message...']")))
         self.driver.find_element_by_xpath("//textarea[@placeholder = 'Message...']").click()
@@ -60,8 +61,14 @@ class MultiDM:
             .key_down(Keys.ENTER) \
             .key_up(Keys.ENTER) \
             .perform()
+    def read(self):
+        return self.driver.find_elements_by_xpath("//div[@class=' e9_tN JRTzd']")[-1].text
+        
+        #while(true):
+          #  if(texts[text_value].)
 
 
 
 dm_time = MultiDM("dhirru12")
-dm_time.text("poop")
+#dm_time.text("poop")
+print(dm_time.read())
