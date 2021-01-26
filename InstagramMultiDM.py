@@ -38,8 +38,8 @@ class MultiDM:
             print("we got it")
             #self.driver.find_element_by_xpath("//div[text()='Log In']").click()
 
-            WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "//*[@id='react-root']/section/nav/div[2]/div/div/div[3]/div/div[2]/a/div/div")))
-            self.driver.find_element_by_xpath("//*[@id='react-root']/section/nav/div[2]/div/div/div[3]/div/div[2]/a/div/div").click()
+            WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "//a[@class = 'xWeGp']")))
+            self.driver.find_element_by_xpath("//a[@class = 'xWeGp']").click()
 
             WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[5]/div/div/div/div[3]/button[2]")))
             self.driver.find_element_by_xpath("/html/body/div[5]/div/div/div/div[3]/button[2]").click()
@@ -50,15 +50,18 @@ class MultiDM:
         except:
             self.driver.quit()
             print("Unexpected error:", sys.exc_info()[0])
-        #except:
-           # print(Exception)
     def chat_with(self,output_user):
         poop = "poop"
-    def text(self,string):
+    def text(self,text_string):
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//textarea[@placeholder = 'Message...']")))
         self.driver.find_element_by_xpath("//textarea[@placeholder = 'Message...']").click()
+        ActionChains(self.driver) \
+            .send_keys(text_string) \
+            .key_down(Keys.ENTER) \
+            .key_up(Keys.ENTER) \
+            .perform()
 
 
 
-fun_time = MultiDM("dhirru12")
-
+dm_time = MultiDM("dhirru12")
+dm_time.text("poop")
