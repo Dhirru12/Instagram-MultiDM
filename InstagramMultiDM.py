@@ -83,39 +83,47 @@ class MultiDM:
             .key_up(Keys.ENTER) \
             .perform()
     def read(self):
-        return self.driver.find_elements_by_xpath("//div[@class=' e9_tN JRTzd']")[-1].text
+        try:
+            return self.driver.find_elements_by_xpath("//div[@class=' e9_tN JRTzd']")[-1].text
+        except:
+            return None
         
         #while(true):
           #  if(texts[text_value].)
 
 
 
-updated_text = "placeholder"
-latest_text = "placeholder"
+front_updated_text = "placeholder"
+front_latest_text = "placeholder"
 front_dm_bot = MultiDM("dhirru12")
 front_dm_bot.text("Welcome to the Multi DM Bot! I help multiple users text as one!")
 front_dm_bot.text("Be sure to use a '!' before every sentence you'd like me to send!")
 front_dm_bot.text("Who would you like to text? Example: '!Dhirru12'")
 
-while(latest_text[0]!="!"):
-    latest_text = front_dm_bot.read()
+while(front_latest_text[0]!="!"):
+    front_latest_text = front_dm_bot.read()
 
-updated_text = latest_text[1:]
+front_updated_text = front_latest_text[1:]
 
 
-front_dm_bot.text("Establishing connection with '"+updated_text+"'...")
+front_dm_bot.text("Establishing connection with '"+front_updated_text+"'...")
 
-back_dm_bot = MultiDM(updated_text)
-
-front_dm_bot.text("Connection established with '"+updated_text+"'!")
+back_dm_bot = MultiDM(front_updated_text)
+front_dm_bot.text("Connection established with '"+front_updated_text+"'!")
+print("Connection established with '"+front_updated_text+"'!")
 
 #dm_time.text("poop")
-updated_text ="!"+updated_text
+front_updated_text ="!"+front_updated_text
+back_updated_text = back_dm_bot.read()
 while(True):
-    latest_text = front_dm_bot.read()
-    if (latest_text!=updated_text and latest_text[0]=="!"):
-        updated_text = latest_text
-        print(updated_text[1:])
-        back_dm_bot.text(updated_text[1:])
+    front_latest_text = front_dm_bot.read()
+    back_latest_text = back_dm_bot.read()
+    if (front_latest_text!=front_updated_text and front_latest_text[0]=="!"):
+        front_updated_text = front_latest_text
+        print("'"+front_updated_text[1:]+"' message sent!")
+        back_dm_bot.text(front_updated_text[1:])
+    elif(back_latest_text!=back_updated_text):
+        front_dm_bot.text("User replied: "+back_latest_text)
+        back_updated_text = back_latest_text
 
 
