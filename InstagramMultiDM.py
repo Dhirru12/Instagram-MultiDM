@@ -44,8 +44,24 @@ class MultiDM:
             WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[5]/div/div/div/div[3]/button[2]")))
             self.driver.find_element_by_xpath("/html/body/div[5]/div/div/div/div[3]/button[2]").click()
             #self.driver.get("https://www.instagram.com/direct/inbox/")
-            WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "//div[text()='"+input_user+"']")))
-            self.driver.find_element_by_xpath("//div[text()='"+input_user+"']").click()
+            try:
+                WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[text()='"+user+"']")))
+                self.driver.find_element_by_xpath("//div[text()='"+user+"']").click()
+            except:
+                self.driver.find_element_by_xpath("//button[@class='wpO6b ZQScA']").click()
+                ActionChains(self.driver) \
+                    .send_keys(user) \
+                    .key_down(Keys.ENTER) \
+                    .key_up(Keys.ENTER) \
+                    .perform()
+                self.driver.find_element_by_xpath("(//div[@class='_7UhW9   xLCgt      MMzan  KV-D4              fDxYl     '])[1]").click()
+                time.sleep(1)
+                self.driver.find_element_by_xpath("//div[@class='rIacr']").click()
+                time.sleep(1)
+
+                
+
+
 
         except:
             self.driver.quit()
@@ -69,6 +85,16 @@ class MultiDM:
 
 
 
-dm_time = MultiDM("dhirru12")
+front_dm_bot = MultiDM("dhirru12")
+back_dm_bot = MultiDM("user2")
+
 #dm_time.text("poop")
-print(dm_time.read())
+updated_text = ""
+while(True):
+    latest_text = front_dm_bot.read()
+    if (latest_text!=updated_text and latest_text[0]=="!"):
+        updated_text = latest_text
+        print(updated_text[1:])
+        back_dm_bot.text(updated_text[1:])
+
+
