@@ -14,58 +14,63 @@ class MultiDM:
 
 
         self.driver = webdriver.Chrome(executable_path = './chromedriver.exe')
+        
         self.driver.get("https://www.instagram.com/direct/inbox/")
         print("Insta Started")
         #System.out.println(driver.getPageSource())
         time.sleep(2.5)
         print("Wait over")
+        #try:
+        #WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input[@name='username']"))).send_keys(botUsername)
+        #WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input[@aria-label='Password']"))).send_keys(botPassword)
+        time.sleep(10)
+        print("Wait over")
+        ActionChains(self.driver) \
+            .key_down(Keys.TAB) \
+            .key_up(Keys.TAB) \
+            .send_keys(botUsername) \
+            .key_down(Keys.TAB) \
+            .key_up(Keys.TAB) \
+            .send_keys(botPassword) \
+            .key_down(Keys.ENTER) \
+            .key_up(Keys.ENTER) \
+            .perform()
+        #self.driver.find_element_by_xpath("//input[@name='username']").click()
+        print("we got it")
+        #self.driver.find_element_by_xpath("//div[text()='Log In']").click()
+
+        WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "//a[@class = 'xWeGp']")))
+        #self.driver.find_element_by_xpath("//a[@class = 'xWeGp']").click()
+
+        
+        self.driver.get("https://www.instagram.com/direct/inbox/")
+
+        WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "//button[@class='aOOlW   HoLwm ']")))
+        self.driver.find_element_by_xpath("//button[@class='aOOlW   HoLwm ']").click()
+        #self.driver.get("https://www.instagram.com/direct/inbox/")
         try:
-            #WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input[@name='username']"))).send_keys(botUsername)
-            #WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input[@aria-label='Password']"))).send_keys(botPassword)
-            time.sleep(10)
-            print("Wait over")
+            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[text()='"+user+"']")))
+            self.driver.find_element_by_xpath("//div[text()='"+user+"']").click()
+        except:
+            self.driver.find_element_by_xpath("//button[@class='wpO6b ZQScA']").click()
             ActionChains(self.driver) \
-                .key_down(Keys.TAB) \
-                .key_up(Keys.TAB) \
-                .send_keys(botUsername) \
-                .key_down(Keys.TAB) \
-                .key_up(Keys.TAB) \
-                .send_keys(botPassword) \
+                .send_keys(user) \
                 .key_down(Keys.ENTER) \
                 .key_up(Keys.ENTER) \
                 .perform()
-            #self.driver.find_element_by_xpath("//input[@name='username']").click()
-            print("we got it")
-            #self.driver.find_element_by_xpath("//div[text()='Log In']").click()
-
-            WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "//a[@class = 'xWeGp']")))
-            self.driver.find_element_by_xpath("//a[@class = 'xWeGp']").click()
-
-            WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[5]/div/div/div/div[3]/button[2]")))
-            self.driver.find_element_by_xpath("/html/body/div[5]/div/div/div/div[3]/button[2]").click()
-            #self.driver.get("https://www.instagram.com/direct/inbox/")
-            try:
-                WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[text()='"+user+"']")))
-                self.driver.find_element_by_xpath("//div[text()='"+user+"']").click()
-            except:
-                self.driver.find_element_by_xpath("//button[@class='wpO6b ZQScA']").click()
-                ActionChains(self.driver) \
-                    .send_keys(user) \
-                    .key_down(Keys.ENTER) \
-                    .key_up(Keys.ENTER) \
-                    .perform()
-                self.driver.find_element_by_xpath("(//div[@class='_7UhW9   xLCgt      MMzan  KV-D4              fDxYl     '])[1]").click()
-                time.sleep(1)
-                self.driver.find_element_by_xpath("//div[@class='rIacr']").click()
-                time.sleep(1)
+            time.sleep(2)
+            self.driver.find_element_by_xpath("(//div[@class = '-qQT3'])[1]").click()
+            time.sleep(1)
+            self.driver.find_element_by_xpath("//div[@class='rIacr']").click()
+            time.sleep(1)
 
                 
 
 
 
-        except:
-            self.driver.quit()
-            print("Unexpected error:", sys.exc_info()[0])
+        #except:
+            #self.driver.quit()
+            #print("Unexpected error:", sys.exc_info()[0])
     def chat_with(self,output_user):
         poop = "poop"
 
@@ -85,11 +90,27 @@ class MultiDM:
 
 
 
+updated_text = "placeholder"
+latest_text = "placeholder"
 front_dm_bot = MultiDM("dhirru12")
-back_dm_bot = MultiDM("user2")
+front_dm_bot.text("Welcome to the Multi DM Bot! I help multiple users text as one!")
+front_dm_bot.text("Be sure to use a '!' before every sentence you'd like me to send!")
+front_dm_bot.text("Who would you like to text? Example: '!Dhirru12'")
+
+while(latest_text[0]!="!"):
+    latest_text = front_dm_bot.read()
+
+updated_text = latest_text[1:]
+
+
+front_dm_bot.text("Establishing connection with '"+updated_text+"'...")
+
+back_dm_bot = MultiDM(updated_text)
+
+front_dm_bot.text("Connection established with '"+updated_text+"'!")
 
 #dm_time.text("poop")
-updated_text = ""
+updated_text ="!"+updated_text
 while(True):
     latest_text = front_dm_bot.read()
     if (latest_text!=updated_text and latest_text[0]=="!"):
