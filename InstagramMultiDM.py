@@ -63,6 +63,8 @@ class MultiDM:
             time.sleep(1)
             self.driver.find_element_by_xpath("//div[@class='rIacr']").click()
             time.sleep(1)
+    def getUsername(self):
+        return self.driver.find_element_by_xpath("//div[@class='_7UhW9    vy6Bb      qyrsm KV-D4              fDxYl     ']").text
 
                 
 
@@ -93,23 +95,27 @@ class MultiDM:
 
 
 
-front_updated_text = "placeholder"
-front_latest_text = "placeholder"
 front_dm_bot = MultiDM("dhirru12")
+
+front_latest_text = front_dm_bot.read()
+front_updated_text = front_latest_text
+
 front_dm_bot.text("Welcome to the Multi DM Bot! I help multiple users text as one!")
 front_dm_bot.text("Be sure to use a '!' before every sentence you'd like me to send!")
-front_dm_bot.text("Who would you like to text? Example: '!Dhirru12'")
+front_dm_bot.text("Who would you like to text? Example: '!Dhirru12' or same for user typed")
 
-while(front_latest_text[0]!="!"):
+while((front_latest_text==None)or(front_latest_text[0]!="!" and front_latest_text==front_updated_text)):
     front_latest_text = front_dm_bot.read()
 
-front_updated_text = front_latest_text[1:]
+if(front_latest_text!='!same'):
+    front_updated_text = front_latest_text[1:]
+
 
 
 front_dm_bot.text("Establishing connection with '"+front_updated_text+"'...")
 
 back_dm_bot = MultiDM(front_updated_text)
-front_dm_bot.text("Connection established with '"+front_updated_text+"'!")
+front_dm_bot.text("Connection established with '"+back_dm_bot.getUsername()+"'!")
 print("Connection established with '"+front_updated_text+"'!")
 
 #dm_time.text("poop")
