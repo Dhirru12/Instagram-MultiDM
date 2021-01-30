@@ -64,6 +64,7 @@ class MultiDM:
             self.driver.find_element_by_xpath("//div[@class='rIacr']").click()
             time.sleep(1)
     def getUsername(self):
+        WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='_7UhW9    vy6Bb      qyrsm KV-D4              fDxYl     ']")))
         return self.driver.find_element_by_xpath("//div[@class='_7UhW9    vy6Bb      qyrsm KV-D4              fDxYl     ']").text
 
                 
@@ -86,7 +87,12 @@ class MultiDM:
             .perform()
     def read(self):
         try:
-            return self.driver.find_elements_by_xpath("//div[@class=' e9_tN JRTzd']")[-1].text
+            text = self.driver.find_elements_by_xpath("//div[@class=' e9_tN JRTzd']")[-1].text
+            self.driver.execute_script("""
+            var element = arguments[0];
+            element.parentNode.removeChild(element);
+            """, self.driver.find_elements_by_xpath("//div[@class=' e9_tN JRTzd']")[-1])
+            return text
         except:
             return None
         
@@ -97,39 +103,48 @@ class MultiDM:
 
 front_dm_bot = MultiDM("dhirru12")
 
-front_latest_text = front_dm_bot.read()
-front_updated_text = front_latest_text
+front_latest_text = "placeholder"
+while (front_latest_text!=None):
+    front_latest_text = front_dm_bot.read()
 
 front_dm_bot.text("Welcome to the Multi DM Bot! I help multiple users text as one!")
 front_dm_bot.text("Be sure to use a '!' before every sentence you'd like me to send!")
-front_dm_bot.text("Who would you like to text? Example: '!Dhirru12' or same for user typed")
+front_dm_bot.text("Who would you like to text? Example: '!Dhirru12'")
 
-while((front_latest_text==None)or(front_latest_text[0]!="!" and front_latest_text==front_updated_text)):
+checker = True
+
+while(checker):
     front_latest_text = front_dm_bot.read()
+    try:
+        checker=front_latest_text[0]!="!"
+    except:
+        checker=True
 
-if(front_latest_text!='!same'):
-    front_updated_text = front_latest_text[1:]
 
+front_latest_text = front_latest_text[1:]
+front_dm_bot.text("Establishing connection with '"+front_latest_text+"'...")
 
-
-front_dm_bot.text("Establishing connection with '"+front_updated_text+"'...")
-
-back_dm_bot = MultiDM(front_updated_text)
+back_dm_bot = MultiDM(front_latest_text)
 front_dm_bot.text("Connection established with '"+back_dm_bot.getUsername()+"'!")
-print("Connection established with '"+front_updated_text+"'!")
+print("Connection established with '"+back_dm_bot.getUsername()+"'!")
 
 #dm_time.text("poop")
-front_updated_text ="!"+front_updated_text
-back_updated_text = back_dm_bot.read()
+back_updated_text = ""
+back_dm_bot.read()
 while(True):
     front_latest_text = front_dm_bot.read()
     back_latest_text = back_dm_bot.read()
-    if (front_latest_text!=front_updated_text and front_latest_text[0]=="!"):
-        front_updated_text = front_latest_text
-        print("'"+front_updated_text[1:]+"' message sent!")
-        back_dm_bot.text(front_updated_text[1:])
-    elif(back_latest_text!=back_updated_text):
-        front_dm_bot.text("User replied: "+back_latest_text)
-        back_updated_text = back_latest_text
+    try:
+        if (front_latest_text[0]=="!"):
+            print("'"+front_latest_text[1:]+"' message sent!")
+            back_dm_bot.text(front_latest_text[1:])
+    except:
+        pass
+    try:
+        if(back_latest_text!=None):
+            front_dm_bot.text("User replied: "+back_latest_text)
+            print("'"+front_latest_text[1:]+"' message recieved!")
+    except:
+        pass
 
 
