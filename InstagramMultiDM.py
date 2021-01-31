@@ -8,7 +8,7 @@ import time
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 class MultiDM:
-    def __init__(self,input_user):
+    def __init__(self,user,):
         botUsername = "doggo.bot8891"
         botPassword = "Password" 
 
@@ -95,6 +95,11 @@ class MultiDM:
             return text
         except:
             return None
+    def clearText (self):
+        latest_text = "placeholder"
+        while (latest_text!=None):
+            time.sleep(1)
+            latest_text = self.read()
         
         #while(true):
           #  if(texts[text_value].)
@@ -104,8 +109,7 @@ class MultiDM:
 front_dm_bot = MultiDM("dhirru12")
 
 front_latest_text = "placeholder"
-while (front_latest_text!=None):
-    front_latest_text = front_dm_bot.read()
+front_dm_bot.clearText()
 
 front_dm_bot.text("Welcome to the Multi DM Bot! I help multiple users text as one!")
 front_dm_bot.text("Be sure to use a '!' before every sentence you'd like me to send!")
@@ -123,14 +127,14 @@ while(checker):
 
 front_latest_text = front_latest_text[1:]
 front_dm_bot.text("Establishing connection with '"+front_latest_text+"'...")
-
 back_dm_bot = MultiDM(front_latest_text)
 front_dm_bot.text("Connection established with '"+back_dm_bot.getUsername()+"'!")
 print("Connection established with '"+back_dm_bot.getUsername()+"'!")
 
-#dm_time.text("poop")
+
 back_updated_text = ""
-back_dm_bot.read()
+time.sleep(5)
+back_dm_bot.clearText()
 while(True):
     front_latest_text = front_dm_bot.read()
     back_latest_text = back_dm_bot.read()
