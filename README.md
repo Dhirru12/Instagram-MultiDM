@@ -40,7 +40,7 @@
   <p align="center">
     Allow multiple users to text through a single account or use an account as an intermediary
     <br />
-    <a href="https://github.com/Dhirru12/Multi-DM-Instagram/blob/main/README"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Dhirru12/Multi-DM-Instagram/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/Dhirru12/Multi-DM-Instagram/blob/main/InstagramMultiDM.py">View Code</a>
@@ -86,54 +86,40 @@
 
 [![Instagram MultiDM Diagram][diagram]](https://example.com)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Instagram leaves constantly astonished with the new features they constanly add, however, they fail to cover niche faetures that don't appeal to the greater demographic. So it's up to creators like me to find the demand and make these features ourselves.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+Instagram MuliDM allows multiple users to text as one single account. Despite seeming obscure, the product is volatile and can serve a variety of purposes.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+What are some examples?
+* Offers anonymity, intermidiary account protects the identities of the input account(s)
+* Allows any allowed person(s) to view a text conversation through the bot live
+* Can be used for pranks and jokes with friends
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+**The bot also includes its own library of methods that can be repurposed for other projects**
+**Example: read(), text(), find_user()**
 
 ### Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+* [Selenium](https://www.selenium.dev)
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Follow these intructions to get Instagram MultiDM started!
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+You only need Selenium as a prequisite
   ```sh
-  npm install npm@latest -g
+  pip install selenium
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+   git clone https://github.com/Dhirru12/Multi-DM-Instagram.git
    ```
 
 
@@ -177,25 +163,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [@your_twitter](https://twitter.com/your_username) - dhirru.p12@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/Dhirru12/Multi-DM-Instagram](https://github.com/Dhirru12/Multi-DM-Instagram)
 
 
 
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
 
 
 
