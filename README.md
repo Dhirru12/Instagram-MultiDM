@@ -35,7 +35,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Instagram Multi DMe</h3>
+  <h3 align="center">Instagram Multi DM</h3>
 
   <p align="center">
     Allow multiple users to text through a single account or use an account as an intermediary
@@ -45,9 +45,9 @@
     <br />
     <a href="https://github.com/Dhirru12/Multi-DM-Instagram/blob/main/InstagramMultiDM.py">View Code</a>
     ·
-    <a href="https://github.com/Dhirru12/Multi-DM-Instagram/InstagramMultiDM.py/issues">Report Bug</a>
+    <a href="https://github.com/Dhirru12/Multi-DM-Instagram/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Dhirru12/Multi-DM-Instagram/InstagramMultiDM.py/issues">Request Feature</a>
+    <a href="https://github.com/Dhirru12/Multi-DM-Instagram/issues">Request Feature</a>
   </p>
 </p>
 
@@ -82,9 +82,9 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## What is The Instagram MultiDM?
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Instagram MultiDM Diagram][diagram]](https://example.com)
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -215,4 +215,4 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [license-url]: https://github.com/Dhirru12/Multi-DM-Instagram/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[diagram]: images/diagram.png
