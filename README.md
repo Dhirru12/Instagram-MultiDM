@@ -32,7 +32,7 @@
 <br />
 <p align="center">
   <a>
-    <img src="images/logo (2).png" alt="Logo" width="80" height="80">
+    <img src="images/logo (2).png" alt="Logo" width="240" height="240">
   </a>
 
   <h3 align="center">Instagram Multi DM</h3>
